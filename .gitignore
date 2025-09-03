@@ -1,0 +1,96 @@
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+*.lib
+*.pdb
+
+# Dependencies
+node_modules/
+.pnpm-store/
+target/
+build/
+dist/
+out/
+
+# Development environments
+.env
+.env.local
+.env.development
+.env.production
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs and debugging
+*.log
+debug/
+logs/
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Package manager files
+package-lock.json
+yarn.lock
+Cargo.lock
+
+# Rust specific
+Cargo.lock
+target/
+
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Java specific
+*.class
+*.jar
+*.war
+
+# C++ specific
+*.gch
+*.pch
+
+# GPU cache and assets
+*.gpu-cache
+*.asset-cache
+temp-assets/
+
+# Large media files (use Git LFS)
+*.psd
+*.ai
+*.sketch
+*.fig
+*.xcf

@@ -1,16 +1,106 @@
-MIT License
+DUAL LICENSE AGREEMENT
 
-Copyright (c) 2024 QuantumCanvas Studio Contributors
+Copyright (c) 2024 Francisco Molina (QuantumCanvas Studio)
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This software and associated documentation files (the "Software") is licensed under the 
+terms set forth below. BY USING, COPYING, MODIFYING, OR DISTRIBUTING THE SOFTWARE, 
+YOU AGREE TO BE BOUND BY THESE TERMS.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+================================================================================
+SECTION I: ATTRIBUTION REQUIREMENT (MANDATORY FOR ALL USES)
+================================================================================
+
+ALL USES of this software, whether personal, academic, research, or commercial, 
+MUST include the following attribution:
+
+1. CREDIT NOTICE: "Powered by QuantumCanvas Studio by Francisco Molina"
+2. COPYRIGHT NOTICE: This copyright notice and license terms
+3. PROJECT LINK: Reference to https://github.com/Yatrogenesis/QuantumCanvas-Studio
+4. AUTHOR CONTACT: pako.molina@gmail.com
+
+ATTRIBUTION MUST BE:
+- Clearly visible to all end users
+- Included in all documentation, about pages, and credits
+- Maintained in all derivative works
+- Present in any public presentation or demonstration
+
+================================================================================
+SECTION II: PERSONAL AND RESEARCH USE LICENSE
+================================================================================
+
+For NON-COMMERCIAL use (personal, educational, research, academic):
+
+Permission is granted to use, copy, modify, and distribute the Software for 
+non-commercial purposes, subject to:
+
+1. MANDATORY ATTRIBUTION as specified in Section I
+2. SAME LICENSE: Any derivative works must use this same license
+3. NO WARRANTY: Software provided "AS IS" without warranty
+4. SHARE-ALIKE: Modifications must be made publicly available under this license
+
+================================================================================
+SECTION III: COMMERCIAL USE LICENSE - ROYALTY REQUIRED
+================================================================================
+
+For COMMERCIAL use (including but not limited to):
+- Business operations, products, or services
+- Revenue-generating applications
+- Professional consulting or contracting
+- Integration into commercial software
+- Any use that directly or indirectly generates revenue
+
+COMMERCIAL LICENSE TERMS:
+1. PRIOR AUTHORIZATION REQUIRED: Contact pako.molina@gmail.com before commercial use
+2. ROYALTY PAYMENT: 5% of gross revenue from products/services using this software
+3. MINIMUM ANNUAL FEE: $1,000 USD per commercial entity
+4. QUARTERLY REPORTING: Revenue reports and royalty payments due quarterly
+5. ATTRIBUTION: Enhanced attribution requirements as specified
+6. AUDIT RIGHTS: Author reserves right to audit compliance
+
+COMMERCIAL LICENSE APPLICATION:
+Submit detailed proposal including:
+- Description of intended commercial use
+- Revenue projections and business model
+- Attribution implementation plan
+- Proposed royalty payment schedule
+
+================================================================================
+SECTION IV: PROHIBITED USES
+================================================================================
+
+The following uses are PROHIBITED without express written permission:
+1. Military or weapons applications
+2. Surveillance or privacy invasion
+3. Discrimination or harassment tools
+4. Cryptocurrency or blockchain speculation
+5. Any illegal or unethical activities
+
+================================================================================
+SECTION V: ENFORCEMENT AND LEGAL TERMS
+================================================================================
+
+VIOLATION PENALTIES:
+- Immediate license termination
+- $10,000 per violation fine
+- Legal action for damages and attorney fees
+- Injunctive relief
+
+JURISDICTION: All disputes governed by laws of [Your Country/State]
+SEVERABILITY: Invalid provisions do not affect remaining terms
+MODIFICATION: Only author may modify these terms
+
+================================================================================
+SECTION VI: CONTACT AND LICENSING
+================================================================================
+
+For commercial licensing, permissions, or questions:
+Email: pako.molina@gmail.com
+Subject Line: "QuantumCanvas Studio Commercial License Request"
+
+RESPONSE TIME: Commercial license requests will be reviewed within 14 business days.
+
+================================================================================
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

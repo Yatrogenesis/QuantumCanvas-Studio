@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2024 Francisco Molina (QuantumCanvas Studio)
+ * Licensed under Dual License Agreement - See LICENSE file for details
+ * 
+ * ATTRIBUTION REQUIRED: This software must include attribution to Francisco Molina
+ * COMMERCIAL USE: Requires separate license and royalties - contact pako.molina@gmail.com
+ * 
+ * Project: https://github.com/Yatrogenesis/QuantumCanvas-Studio
+ * Author: Francisco Molina <pako.molina@gmail.com>
+ */
+
 #include "memory_manager.hpp"
 #include <iostream>
 #include <algorithm>

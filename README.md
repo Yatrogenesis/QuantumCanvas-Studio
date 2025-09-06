@@ -2,7 +2,7 @@
 ## Enterprise-Grade Creative Suite with GPU Acceleration
 **Status: 15% Core Complete + Working Examples** | **Development Phase: Foundation with Executable Demos**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Dual License](https://img.shields.io/badge/License-Dual%20License-red.svg)](./LICENSE)
 [![Build Status](https://img.shields.io/badge/build-examples--working-brightgreen.svg)](https://github.com/username/quantumcanvas-studio/actions)
 [![Version](https://img.shields.io/badge/version-0.1.0--examples-blue.svg)](https://github.com/username/quantumcanvas-studio/releases)
 [![Honest Status](https://img.shields.io/badge/status-transparent--development-orange.svg)](./HONEST_STATUS_REPORT.md)
@@ -217,8 +217,71 @@ This project follows a **modular multi-agent development approach**:
 - **Agent-UI**: Window Manager, Touch Controls 🚧 (Next Phase)
 - **Agent-Document**: Document model & versioning ⏳ (Next Phase)
 
-### 📄 License
-Licensed under MIT License - see [LICENSE](./LICENSE) for details.
+## 📄 LICENSE - IMPORTANT LEGAL NOTICE
+
+**⚠️ CRITICAL: THIS SOFTWARE IS NOW UNDER DUAL LICENSE AGREEMENT ⚠️**
+
+### 🔒 MANDATORY ATTRIBUTION REQUIREMENT
+
+**ALL USES** of this software (personal, research, commercial) **MUST** include:
+
+```
+"Powered by QuantumCanvas Studio by Francisco Molina"
+```
+
+This attribution must be **clearly visible to all end users** in:
+- Application interfaces and about pages
+- Documentation and credits
+- Public presentations or demonstrations
+- All derivative works
+
+### 🆓 PERSONAL & RESEARCH USE
+- **FREE** for personal, educational, and research purposes
+- **Attribution REQUIRED** (as specified above)
+- Modifications must maintain same license
+- Share-alike: derived works must be open source
+
+### 💰 COMMERCIAL USE - ROYALTIES REQUIRED
+
+**COMMERCIAL USE REQUIRES SEPARATE LICENSE AND ROYALTIES**
+
+Commercial use includes:
+- Business operations or products
+- Revenue-generating applications  
+- Professional services or consulting
+- Any use generating direct or indirect revenue
+
+**Commercial License Terms:**
+- **5% royalty** on gross revenue from products/services using this software
+- **$1,000 minimum annual fee** per commercial entity
+- **Prior authorization required** - contact pako.molina@gmail.com
+- Quarterly reporting and payment required
+- Enhanced attribution requirements
+
+### 🚫 PROHIBITED USES
+Without express written permission:
+- Military or weapons applications
+- Surveillance or privacy invasion tools
+- Discrimination or harassment applications
+- Cryptocurrency/blockchain speculation
+- Any illegal or unethical activities
+
+### ⚖️ LEGAL ENFORCEMENT
+- **$10,000 fine per violation**
+- Immediate license termination for violations
+- Legal action for damages and attorney fees
+- Injunctive relief available
+
+### 📧 COMMERCIAL LICENSING CONTACT
+**Email:** pako.molina@gmail.com  
+**Subject:** "QuantumCanvas Studio Commercial License Request"  
+**Response Time:** 14 business days
+
+For complete legal terms, see: [LICENSE](./LICENSE)
+
+---
+
+**By using this software, you agree to be bound by these licensing terms.**
 
 ### 🆘 Support & Community  
 - **Issues**: [GitHub Issues](https://github.com/username/quantumcanvas-studio/issues)

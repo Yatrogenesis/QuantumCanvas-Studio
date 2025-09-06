@@ -1,0 +1,435 @@
+// Top-level build.gradle for QuantumCanvas Studio Android
+buildscript {
+    ext {
+        // SDK and build tool versions
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        minSdkVersion = 21
+        buildToolsVersion = "34.0.0"
+        
+        // Library versions
+        kotlinVersion = '1.9.20'
+        gradleVersion = '8.1.4'
+        ndkVersion = '25.2.9519653'
+        
+        // AndroidX versions
+        appCompatVersion = '1.6.1'
+        coreKtxVersion = '1.12.0'
+        fragmentVersion = '1.6.2'
+        lifecycleVersion = '2.7.0'
+        
+        // Material Design
+        materialVersion = '1.11.0'
+        
+        // Networking and serialization
+        okhttpVersion = '4.12.0'
+        gsonVersion = '2.10.1'
+        
+        // Image processing
+        glideVersion = '4.16.0'
+        
+        // Testing
+        junitVersion = '4.13.2'
+        espressoVersion = '3.5.1'
+        mockitoVersion = '5.7.0'
+        
+        // Security and privacy
+        biometricVersion = '1.1.0'
+        cryptoVersion = '1.1.0-alpha06'
+        
+        // Play Services and Firebase
+        playServicesVersion = '18.2.0'
+        firebaseBomVersion = '32.7.0'
+        
+        // Samsung SDK versions (optional)
+        samsungSdkVersion = '1.0.0'
+        
+        // Huawei HMS versions (optional)
+        huaweiHmsVersion = '6.11.0.302'
+    }
+    
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        // Samsung Developer Hub
+        maven { url 'https://repo.samsung.com/repository/public/' }
+        // Huawei Developer Repository
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+    
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        
+        // Google services plugin
+        classpath 'com.google.gms:google-services:4.4.0'
+        
+        // Firebase Crashlytics plugin
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
+        
+        // Play App Signing
+        classpath 'com.google.android.gms:play-services-auth:20.7.0'
+        
+        // AGP (Android Gradle Plugin) compatibility
+        classpath 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1'
+        
+        // Huawei AGConnect plugin (if supporting AppGallery)
+        classpath 'com.huawei.agconnect:agcp:1.9.1.301'
+    }
+}
+
+// App module build.gradle
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+// Apply Google services plugin
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+// Conditional Huawei AGConnect plugin
+if (project.hasProperty('huawei')) {
+    apply plugin: 'com.huawei.agconnect'
+}
+
+android {
+    namespace 'com.quantumcanvas.studio'
+    compileSdk compileSdkVersion
+    buildToolsVersion buildToolsVersion
+    ndkVersion ndkVersion
+    
+    defaultConfig {
+        applicationId "com.quantumcanvas.studio"
+        minSdk minSdkVersion
+        targetSdk targetSdkVersion
+        versionCode 1
+        versionName "1.0.0"
+        
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Enable multidex for large apps
+        multiDexEnabled true
+        
+        // Vector drawables support
+        vectorDrawables.useSupportLibrary = true
+        
+        // Native library configuration
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a', 'x86', 'x86_64'
+        }
+        
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++20", "-frtti", "-fexceptions"
+                arguments "-DANDROID_STL=c++_shared", 
+                         "-DANDROID_PLATFORM=android-21",
+                         "-DQCS_PLATFORM_ANDROID=1",
+                         "-DQCS_ANDROID_PLAYSTORE_COMPLIANCE=1",
+                         "-DQCS_ANDROID_GALAXYSTORE_COMPLIANCE=1",
+                         "-DQCS_ANDROID_APPGALLERY_COMPLIANCE=1",
+                         "-DQCS_GDPR_COMPLIANCE_ENABLED=1",
+                         "-DQCS_PRIVACY_COMPLIANCE_ENABLED=1"
+            }
+        }
+        
+        // Packaging options
+        packagingOptions {
+            pickFirst '**/libc++_shared.so'
+            pickFirst '**/libjsc.so'
+            exclude 'META-INF/DEPENDENCIES'
+            exclude 'META-INF/LICENSE'
+            exclude 'META-INF/LICENSE.txt'
+            exclude 'META-INF/NOTICE'
+            exclude 'META-INF/NOTICE.txt'
+        }
+    }
+    
+    // Build types
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Debug signing config
+            signingConfig signingConfigs.debug
+            
+            // Debug-specific build config
+            buildConfigField "boolean", "DEBUG_MODE", "true"
+            buildConfigField "String", "BUILD_TYPE", '"debug"'
+            
+            // Enable leak detection in debug
+            debuggable true
+        }
+        
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Release signing config (configure in keystore.properties)
+            signingConfig signingConfigs.release
+            
+            // Release-specific build config
+            buildConfigField "boolean", "DEBUG_MODE", "false"
+            buildConfigField "String", "BUILD_TYPE", '"release"'
+            
+            // App Bundle optimization
+            bundle {
+                language {
+                    enableSplit = true
+                }
+                density {
+                    enableSplit = true
+                }
+                abi {
+                    enableSplit = true
+                }
+            }
+        }
+    }
+    
+    // Product flavors for different stores
+    flavorDimensions "store"
+    productFlavors {
+        playstore {
+            dimension "store"
+            applicationIdSuffix ""
+            buildConfigField "String", "STORE_VARIANT", '"playstore"'
+            buildConfigField "boolean", "GOOGLE_PLAY_SERVICES_ENABLED", "true"
+            buildConfigField "boolean", "HUAWEI_SERVICES_ENABLED", "false"
+            buildConfigField "boolean", "SAMSUNG_SERVICES_ENABLED", "false"
+        }
+        
+        galaxystore {
+            dimension "store"
+            applicationIdSuffix ""
+            buildConfigField "String", "STORE_VARIANT", '"galaxystore"'
+            buildConfigField "boolean", "GOOGLE_PLAY_SERVICES_ENABLED", "true"
+            buildConfigField "boolean", "HUAWEI_SERVICES_ENABLED", "false"
+            buildConfigField "boolean", "SAMSUNG_SERVICES_ENABLED", "true"
+        }
+        
+        appgallery {
+            dimension "store"
+            applicationIdSuffix ""
+            buildConfigField "String", "STORE_VARIANT", '"appgallery"'
+            buildConfigField "boolean", "GOOGLE_PLAY_SERVICES_ENABLED", "false"
+            buildConfigField "boolean", "HUAWEI_SERVICES_ENABLED", "true"
+            buildConfigField "boolean", "SAMSUNG_SERVICES_ENABLED", "false"
+        }
+        
+        universal {
+            dimension "store"
+            applicationIdSuffix ""
+            buildConfigField "String", "STORE_VARIANT", '"universal"'
+            buildConfigField "boolean", "GOOGLE_PLAY_SERVICES_ENABLED", "true"
+            buildConfigField "boolean", "HUAWEI_SERVICES_ENABLED", "true"
+            buildConfigField "boolean", "SAMSUNG_SERVICES_ENABLED", "true"
+        }
+    }
+    
+    // Signing configurations
+    signingConfigs {
+        debug {
+            // Debug keystore (auto-generated)
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        
+        release {
+            // Load keystore properties from file
+            def keystorePropertiesFile = rootProject.file("keystore.properties")
+            def keystoreProperties = new Properties()
+            if (keystorePropertiesFile.exists()) {
+                keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+                
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
+        }
+    }
+    
+    // External native build
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+    
+    // Build features
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+        dataBinding true
+        compose false  // Disable Compose for now
+    }
+    
+    // Compile options
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+        
+        // Enable core library desugaring for newer APIs
+        coreLibraryDesugaringEnabled true
+    }
+    
+    kotlinOptions {
+        jvmTarget = '11'
+        freeCompilerArgs += [
+            "-opt-in=kotlin.RequiresOptIn",
+            "-Xjvm-default=all"
+        ]
+    }
+    
+    // Lint options
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        disable 'MissingTranslation', 'ExtraTranslation'
+        
+        // Privacy compliance checks
+        enable 'PrivateResource', 'UnusedResources', 'IconMissingDensityFolder'
+    }
+    
+    // Test options
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+    
+    // Resource configuration
+    resourcePrefix "qcs_"
+    
+    // Dependency resolution strategy
+    configurations.all {
+        resolutionStrategy {
+            force 'androidx.core:core:' + coreKtxVersion
+            force 'androidx.appcompat:appcompat:' + appCompatVersion
+        }
+    }
+}
+
+dependencies {
+    // Core library desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+    
+    // AndroidX Core libraries
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    
+    // UI and Material Design
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    
+    // Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.6'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.6'
+    
+    // Storage and preferences
+    implementation 'androidx.preference:preference-ktx:1.2.1'
+    implementation 'androidx.room:room-runtime:2.6.1'
+    implementation 'androidx.room:room-ktx:2.6.1'
+    kapt 'androidx.room:room-compiler:2.6.1'
+    
+    // Security and privacy
+    implementation "androidx.biometric:biometric:$biometricVersion"
+    implementation "androidx.security:security-crypto:$cryptoVersion"
+    
+    // Work Manager for background tasks
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+    
+    // Networking
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    
+    // Image processing and loading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    
+    // OpenGL and graphics
+    implementation 'androidx.opengl:opengl:1.0.0'
+    
+    // Store-specific dependencies
+    playstoreImplementation "com.google.android.gms:play-services-base:$playServicesVersion"
+    playstoreImplementation "com.google.android.gms:play-services-auth:20.7.0"
+    playstoreImplementation "com.google.android.gms:play-services-drive:17.0.0"
+    
+    // Firebase (Play Store variant)
+    playstoreImplementation platform("com.google.firebase:firebase-bom:$firebaseBomVersion")
+    playstoreImplementation 'com.google.firebase:firebase-analytics-ktx'
+    playstoreImplementation 'com.google.firebase:firebase-crashlytics-ktx'
+    playstoreImplementation 'com.google.firebase:firebase-perf-ktx'
+    
+    // Samsung Galaxy Store dependencies
+    galaxystoreImplementation "com.google.android.gms:play-services-base:$playServicesVersion"
+    galaxystoreImplementation "com.samsung.android:app-sdk:$samsungSdkVersion"
+    
+    // Huawei AppGallery dependencies
+    appgalleryImplementation "com.huawei.hms:base:$huaweiHmsVersion"
+    appgalleryImplementation 'com.huawei.agconnect:agconnect-core:1.9.1.301'
+    appgalleryImplementation 'com.huawei.hms:hianalytics:6.11.0.302'
+    
+    // Universal build includes all services
+    universalImplementation "com.google.android.gms:play-services-base:$playServicesVersion"
+    universalImplementation "com.samsung.android:app-sdk:$samsungSdkVersion"
+    universalImplementation "com.huawei.hms:base:$huaweiHmsVersion"
+    
+    // Testing dependencies
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation 'androidx.test:core:1.5.0'
+    testImplementation 'androidx.test.ext:junit:1.1.5'
+    testImplementation 'androidx.test:runner:1.5.2'
+    
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
+    
+    // UI testing
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    
+    // Leak detection (debug only)
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.12'
+}
+
+// Apply Google services plugin at the end
+apply plugin: 'com.google.gms.google-services'
+
+// Post-processing tasks
+tasks.whenTaskAdded { task ->
+    if (task.name.contains('GoogleServices')) {
+        task.enabled = project.hasProperty('google-services.json')
+    }
+}
+
+// Custom task for generating privacy compliance report
+task generatePrivacyReport {
+    doLast {
+        println "Generating privacy compliance report..."
+        // Custom privacy compliance validation logic would go here
+    }
+}
+
+// Hook privacy compliance check into build process
+preBuild.dependsOn generatePrivacyReport

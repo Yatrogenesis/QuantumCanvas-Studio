@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Bundle Information -->
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	
+	<!-- Display Name -->
+	<key>CFBundleDisplayName</key>
+	<string>QuantumCanvas Studio</string>
+	
+	<!-- iOS Version Requirements -->
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>MinimumOSVersion</key>
+	<string>14.0</string>
+	
+	<!-- Supported Interface Orientations -->
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	
+	<!-- Scene Configuration (iOS 13+) -->
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>QuantumCanvasSceneDelegate</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	
+	<!-- App Delegate -->
+	<key>UIApplicationDelegate</key>
+	<string>QuantumCanvasAppDelegate</string>
+	
+	<!-- Status Bar Configuration -->
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
+	
+	<!-- Device Capabilities -->
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+		<string>metal</string>
+	</array>
+	
+	<!-- File Sharing and Document Types -->
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	
+	<!-- Document Types -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>QuantumCanvas Project</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.quantumcanvas.project</string>
+			</array>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>Images</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.image</string>
+				<string>public.jpeg</string>
+				<string>public.png</string>
+				<string>com.adobe.photoshop-image</string>
+			</array>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+		</dict>
+	</array>
+	
+	<!-- Exported UTI Types -->
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.content</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>QuantumCanvas Project File</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.quantumcanvas.project</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>qcs</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-quantumcanvas-project</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
+	
+	<!-- Privacy Usage Descriptions (Required for App Store) -->
+	<!-- Camera Access -->
+	<key>NSCameraUsageDescription</key>
+	<string>QuantumCanvas Studio uses the camera to capture reference images and textures for your creative projects. Camera access is optional and only used when you choose to add photos to your artwork.</string>
+	
+	<!-- Photo Library Access -->
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>QuantumCanvas Studio accesses your photo library to import images, textures, and reference materials for your creative projects. Photo library access is optional and only used when importing media.</string>
+	
+	<!-- Photo Library Add Usage -->
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>QuantumCanvas Studio can save your completed artwork and renders to your photo library. This permission is optional and only used when you choose to save images.</string>
+	
+	<!-- Face ID / Touch ID -->
+	<key>NSFaceIDUsageDescription</key>
+	<string>QuantumCanvas Studio can use Face ID or Touch ID to securely protect your projects and user preferences. Biometric authentication is optional and enhances security.</string>
+	
+	<!-- Document Storage Access -->
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>QuantumCanvas Studio needs access to the Documents folder to save and open your creative projects. This ensures your work is preserved and accessible across app launches.</string>
+	
+	<!-- Contacts Access (if needed for collaboration features) -->
+	<key>NSContactsUsageDescription</key>
+	<string>QuantumCanvas Studio can access your contacts to facilitate project collaboration and sharing. Contact access is optional and only used for sharing features.</string>
+	
+	<!-- Microphone Access (if needed for audio features) -->
+	<key>NSMicrophoneUsageDescription</key>
+	<string>QuantumCanvas Studio may use the microphone for voice memos and audio annotations in your creative projects. Microphone access is optional.</string>
+	
+	<!-- App Tracking Transparency (iOS 14.5+) -->
+	<key>NSUserTrackingUsageDescription</key>
+	<string>QuantumCanvas Studio uses data from other apps and websites to provide personalized content recommendations and improve your creative experience. You can disable tracking at any time in Settings.</string>
+	
+	<!-- Local Network Usage (if needed) -->
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>QuantumCanvas Studio can connect to devices on your local network to sync projects across your devices and enable collaborative features.</string>
+	
+	<!-- Motion Usage (for Apple Pencil and gesture recognition) -->
+	<key>NSMotionUsageDescription</key>
+	<string>QuantumCanvas Studio uses motion data to enhance Apple Pencil input and gesture recognition for a more natural creative experience.</string>
+	
+	<!-- Bluetooth Usage (for styluses and accessories) -->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>QuantumCanvas Studio can connect to Bluetooth accessories like styluses and input devices to enhance your creative workflow.</string>
+	
+	<!-- Background Processing -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>background-processing</string>
+		<string>background-fetch</string>
+	</array>
+	
+	<!-- App Transport Security -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<!-- Add any specific domains that need HTTP access -->
+		</dict>
+	</dict>
+	
+	<!-- Accessibility Features -->
+	<key>UIAccessibilityTraits</key>
+	<string>CreativeApp</string>
+	
+	<!-- Apple Pencil Support -->
+	<key>UIPencilInteraction</key>
+	<true/>
+	
+	<!-- Multitasking -->
+	<key>UIRequiresFullScreen</key>
+	<false/>
+	<key>UISupportsMultipleScenes</key>
+	<true/>
+	
+	<!-- Performance and Compatibility -->
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	
+	<!-- Metal Performance Shaders -->
+	<key>MTLCompileOptions</key>
+	<dict>
+		<key>preprocessorMacros</key>
+		<dict>
+			<key>METAL_ENABLED</key>
+			<string>1</string>
+		</dict>
+	</dict>
+	
+	<!-- App Store Compliance -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	
+	<!-- Localization -->
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>es</string>
+		<string>fr</string>
+		<string>de</string>
+		<string>it</string>
+		<string>ja</string>
+		<string>ko</string>
+		<string>zh-Hans</string>
+		<string>zh-Hant</string>
+		<string>pt</string>
+		<string>ru</string>
+	</array>
+</dict>
+</plist>
